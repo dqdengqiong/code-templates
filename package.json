@@ -1,0 +1,103 @@
+{
+	"name": "code-templates",
+	"displayName": "Code Templates",
+	"description": "致力于可以快速生成模板代码的 VSCode 插件",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.84.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [],
+	"main": "./out/extension.js",
+	"icon": "images/icon.png",
+	"contributes": {
+		"commands": [
+			{
+				"command": "code-templates.helloWorld",
+				"title": "Hello World"
+			},
+			{
+				"command": "fileExplorer.openFile",
+				"title": "Open File"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "code-templates-sidebar2",
+					"title": "Code Templates",
+					"icon": "./images/icon.svg"
+				}
+			]
+		},
+		"views": {
+			"code-templates-sidebar2": [
+				{
+					"type": "webview",
+					"id": "code-templates-list",
+					"name": "模版目录",
+					"icon": "./images/icon.svg",
+					"contextualTitle": "模版目录"
+				},
+				{
+					"id": "fileExplorer",
+					"name": "File Explorer"
+				}
+			]
+		},
+		"configuration": [
+			{
+				"type": "object",
+				"title": "Code Maker",
+				"properties": {
+					"code-maker.config.gitTemplateUrl": {
+						"order": 1,
+						"type": "string",
+						"default": "https://gitee.com/gengjian1203/code-template.git",
+						"markdownDescription": "模板代码仓库url"
+					},
+					"code-maker.config.gitTemplatePath": {
+						"order": 2,
+						"type": "string",
+						"default": "templates",
+						"markdownDescription": "模板代码仓库模板路径"
+					},
+					"code-maker.config.localTemplatePath": {
+						"order": 3,
+						"type": "string",
+						"default": "tpl",
+						"markdownDescription": "本地存放模板路径"
+					},
+					"code-maker.reviewAsset.assetExtensions": {
+						"order": 4,
+						"type": "string",
+						"default": ".jpeg|.jpg|.png|.gif|.bmp|.tiff|.tif|.ttf|.ttc|.otf|.woff|.woff2|.eot|.fon|.font|.svg",
+						"markdownDescription": "需要检验资源的拓展名列表"
+					}
+				}
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.84.0",
+		"@types/mocha": "^10.0.3",
+		"@types/node": "18.x",
+		"@typescript-eslint/eslint-plugin": "^6.9.0",
+		"@typescript-eslint/parser": "^6.9.0",
+		"eslint": "^8.52.0",
+		"glob": "^10.3.10",
+		"mocha": "^10.2.0",
+		"typescript": "^5.2.2",
+		"@vscode/test-electron": "^2.3.6"
+	}
+}
