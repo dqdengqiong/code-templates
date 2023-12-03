@@ -15,10 +15,39 @@
 	"contributes": {
 		"commands": [
 			{
+				"command": "code-templates.base.CloneTemplate",
+				"title": "🎉 拉取模板代码"
+			},
+			{
+				"command": "code-templates.base.OpenTemplate",
+				"title": "查看本地模板代码",
+				"icon": {
+					"light": "./images/icon.svg",
+					"dark": "./images/icon.svg"
+				}
+			},
+			{
 				"command": "code-templates.helloWorld",
 				"title": "Hello World"
 			}
 		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "code-templates.base.CloneTemplate",
+					"group": "navigation@1"
+				}
+			],
+			"view/item/context": [],
+			"editor/context": [],
+			"editor/title": [
+				{
+					"command": "code-templates.base.OpenTemplate",
+					"group": "navigation"
+				}
+			],
+			"editor/title/context": []
+		},
 		"viewsContainers": {
 			"activitybar": [
 				{
@@ -42,7 +71,7 @@
 		"configuration": [
 			{
 				"type": "object",
-				"title": "Code Maker",
+				"title": "Code Templates",
 				"properties": {
 					"code-maker.config.gitTemplateUrl": {
 						"order": 1,
@@ -61,12 +90,6 @@
 						"type": "string",
 						"default": "tpl",
 						"markdownDescription": "本地存放模板路径"
-					},
-					"code-maker.reviewAsset.assetExtensions": {
-						"order": 4,
-						"type": "string",
-						"default": ".jpeg|.jpg|.png|.gif|.bmp|.tiff|.tif|.ttf|.ttc|.otf|.woff|.woff2|.eot|.fon|.font|.svg",
-						"markdownDescription": "需要检验资源的拓展名列表"
 					}
 				}
 			}

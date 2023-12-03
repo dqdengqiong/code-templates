@@ -7,6 +7,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 import sidebar from "./sidebar";
+import commands from "./command";
 
 // 初始化侧边栏
 const initSidebar = async (context: vscode.ExtensionContext) => {
@@ -34,22 +35,13 @@ export function activate(context: vscode.ExtensionContext) {
 		'Congratulations, your extension "code-templates" is now active!'
 	);
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand(
-		"code-templates.helloWorld",
-		() => {
-			// The code you place here will be executed every time your command is executed
-			// Display a message box to the user
-			vscode.window.showInformationMessage("Hello World from Code Templates!");
-		}
-	);
-
 	// 初始化侧边栏
 	initSidebar(context);
 
-	context.subscriptions.push(disposable);
+	// 注册命令
+	for (let key in commands) {
+		context.subscriptions.push(commands[key](context));
+	}
 }
 
 // This method is called when your extension is deactivated

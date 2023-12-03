@@ -56,9 +56,7 @@ export class SidebarProviderWebview implements vscode.WebviewViewProvider {
 		const nonce = getNonce();
 
 		const { localTEMPLATEPath } = getTemplatePath(this.content);
-		const path =
-			"/Users/miya.deng/.vscode/extensions/gengjian1203.code-maker-2.1.1/tpl/code-template/templates";
-		const list = getTemplateList(path);
+		const list = getTemplateList(localTEMPLATEPath);
 		const templateItems = list.map((item: any) => {
 			return `<div class="mb-2">${item.fileName}</div>
 			<div class="mb-1">${item.readmeName}</div>
@@ -67,8 +65,6 @@ export class SidebarProviderWebview implements vscode.WebviewViewProvider {
 				item.demoUrl ? "Demo" : ""
 			} </a></div>`;
 		});
-		console.log("templateItems", list);
-
 		return `<!DOCTYPE html>
 	      <html lang="en">
 	      <head>
