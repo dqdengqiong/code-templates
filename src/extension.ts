@@ -8,55 +8,6 @@
 import * as vscode from "vscode";
 import sidebar from "./sidebar";
 
-import * as fs from "fs";
-import * as path from "path";
-import { getTemplatePath } from "./utils";
-
-// export class FileExplorer implements vscode.TreeDataProvider<vscode.Uri> {
-// 	private _onDidChangeTreeData: vscode.EventEmitter<vscode.Uri | undefined> =
-// 		new vscode.EventEmitter<vscode.Uri | undefined>();
-// 	readonly onDidChangeTreeData: vscode.Event<vscode.Uri | undefined> =
-// 		this._onDidChangeTreeData.event;
-
-// 	constructor(private workspaceRoot: string) {}
-
-// 	refresh(): void {
-// 		this._onDidChangeTreeData.fire(undefined);
-// 	}
-
-// 	getTreeItem(uri: vscode.Uri): vscode.TreeItem {
-// 		let treeItem = new vscode.TreeItem(
-// 			uri,
-// 			vscode.TreeItemCollapsibleState.Collapsed
-// 		);
-// 		if (fs.lstatSync(uri.fsPath).isFile()) {
-// 			treeItem = new vscode.TreeItem(uri, vscode.TreeItemCollapsibleState.None);
-// 			treeItem.command = {
-// 				command: "fileExplorer.openFile",
-// 				title: "Open File",
-// 				arguments: [uri],
-// 			};
-// 			treeItem.contextValue = "file";
-// 		}
-// 		return treeItem;
-// 	}
-
-// 	getChildren(uri?: vscode.Uri): Thenable<vscode.Uri[]> {
-// 		if (!uri) {
-// 			if (!this.workspaceRoot) {
-// 				vscode.window.showInformationMessage("No folder or workspace opened");
-// 				return Promise.resolve([]);
-// 			}
-// 			return Promise.resolve([vscode.Uri.file(this.workspaceRoot)]);
-// 		} else {
-// 			const children = fs
-// 				.readdirSync(uri.fsPath)
-// 				.map((name) => vscode.Uri.file(path.join(uri.fsPath, name)));
-// 			return Promise.resolve(children);
-// 		}
-// 	}
-// }
-
 // 初始化侧边栏
 const initSidebar = async (context: vscode.ExtensionContext) => {
 	const pathHtmlNpmManager = "./src/webview/template-list/index.html";
@@ -94,17 +45,6 @@ export function activate(context: vscode.ExtensionContext) {
 			vscode.window.showInformationMessage("Hello World from Code Templates!");
 		}
 	);
-
-	// const { localREPOPath, localTEMPLATEPath } = getTemplatePath(context);
-	// if (localTEMPLATEPath) {
-	// 	const url =
-	// 		"/Users/miya.deng/.vscode/extensions/gengjian1203.code-maker-2.1.1/tpl/code-template/templates";
-	// 	const fileExplorerProvider = new FileExplorer(url);
-	// 	vscode.window.registerTreeDataProvider(
-	// 		"fileExplorer",
-	// 		fileExplorerProvider
-	// 	);
-	// }
 
 	// 初始化侧边栏
 	initSidebar(context);

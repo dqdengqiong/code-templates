@@ -17,10 +17,6 @@
 			{
 				"command": "code-templates.helloWorld",
 				"title": "Hello World"
-			},
-			{
-				"command": "fileExplorer.openFile",
-				"title": "Open File"
 			}
 		],
 		"viewsContainers": {
@@ -40,10 +36,6 @@
 					"name": "模版目录",
 					"icon": "./images/icon.svg",
 					"contextualTitle": "模版目录"
-				},
-				{
-					"id": "fileExplorer",
-					"name": "File Explorer"
 				}
 			]
 		},

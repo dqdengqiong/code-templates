@@ -49,7 +49,7 @@ export class SidebarProviderWebview implements vscode.WebviewViewProvider {
 			)
 		);
 		const styleMainUri = webview.asWebviewUri(
-			vscode.Uri.joinPath(this.content.extensionUri, "build", "main.css")
+			vscode.Uri.joinPath(this.content.extensionUri, "assets", "style.css")
 		);
 
 		// Use a nonce to 只允许特定脚本运行.
@@ -60,7 +60,12 @@ export class SidebarProviderWebview implements vscode.WebviewViewProvider {
 			"/Users/miya.deng/.vscode/extensions/gengjian1203.code-maker-2.1.1/tpl/code-template/templates";
 		const list = getTemplateList(path);
 		const templateItems = list.map((item: any) => {
-			return `<div ></div><div>${item.fileName}</div><div>${item.readmeName}</div><div>${item.readmeDetail}</div></div>`;
+			return `<div class="mb-2">${item.fileName}</div>
+			<div class="mb-1">${item.readmeName}</div>
+			<div class="mb-1">${item.readmeDetail}</div>
+			<div class="mb-4"><a href=${item.demoUrl}>${
+				item.demoUrl ? "Demo" : ""
+			} </a></div>`;
 		});
 		console.log("templateItems", list);
 
@@ -72,10 +77,9 @@ export class SidebarProviderWebview implements vscode.WebviewViewProvider {
 									webview.cspSource
 								}; script-src 'nonce-${nonce}';">
 	      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	      <link href="${styleMainUri}" rel="stylesheet">
+		  <link href="${styleMainUri}" rel="stylesheet">
 	              <script nonce="${nonce}">
 	                const tsvscode = acquireVsCodeApi(); //内置函数，可以访问 VS Code API 对象
-	                const apiBaseUrl = 'https://cnodejs.org/'
 	              </script>
 	              </head>
 	            <body>
