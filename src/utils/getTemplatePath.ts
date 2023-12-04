@@ -1,3 +1,8 @@
+/*
+ * @Author: miya.deng
+ * @Date: 2023-12-03 17:20:06
+ * @Description:
+ */
 import * as vscode from "vscode";
 
 /**
@@ -7,10 +12,12 @@ const getTemplatePath = (context: vscode.ExtensionContext) => {
 	const extensionPath = context.extensionPath; // vscode.extensions.getExtension("<publisher_name>.<extension_name>").extensionPath
 	const vscodeConfig = vscode.workspace.getConfiguration();
 	const gitTemplateUrl = String(
-		vscodeConfig.get("code-maker.config.gitTemplateUrl")
+		vscodeConfig.get("code-templates.config.gitTemplateUrl")
 	);
-	const gitTemplatePath = vscodeConfig.get("code-maker.config.gitTemplatePath");
-	const tplName = vscodeConfig.get("code-maker.config.localTemplatePath");
+	const gitTemplatePath = vscodeConfig.get(
+		"code-templates.config.gitTemplatePath"
+	);
+	const tplName = vscodeConfig.get("code-templates.config.localTemplatePath");
 
 	const match = gitTemplateUrl.match(/\/([^\/]*)$/) || [];
 	const repoName = (match[1] || "").replace(/.git/g, ""); // 模板代码仓库名称 用于判断是否已经存在该仓库
