@@ -1,6 +1,6 @@
 # Code Templates (代码模版)
 
-一款致力于可以快速生成模板代码片段的 VSCode 插件.  
+一款可以快速生成模板代码片段/组件的 VSCode 插件.  
 可通过插件设置页`settings.json`, 搜索`Code Templates`, 调整本插件功能的相关配置.
 
 ### 1. 左侧资源管理器
