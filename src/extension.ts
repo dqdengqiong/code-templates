@@ -8,6 +8,7 @@
 import * as vscode from "vscode";
 import sidebar from "./sidebar";
 import commands from "./command";
+import updateTemplateCode from "./utils/updateTemplateCode";
 
 // 初始化侧边栏
 const initSidebar = async (context: vscode.ExtensionContext) => {
@@ -34,6 +35,7 @@ export function activate(context: vscode.ExtensionContext) {
 	console.log(
 		'Congratulations, your extension "code-templates" is now active!'
 	);
+	updateTemplateCode(context);
 
 	// 初始化侧边栏
 	initSidebar(context);
