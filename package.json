@@ -1,7 +1,7 @@
 {
 	"name": "code-templates",
 	"displayName": "Code Templates",
-	"description": "致力于可以快速生成模板代码的 VSCode 插件",
+	"description": "快速生成模板代码的 VSCode 插件",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.84.0"
@@ -9,6 +9,10 @@
 	"categories": [
 		"Other"
 	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/dqdengqiong/code-templates"
+	},
 	"activationEvents": [],
 	"main": "./out/extension.js",
 	"icon": "images/icon.png",
