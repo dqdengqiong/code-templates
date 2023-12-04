@@ -27,7 +27,6 @@ export default (context: vscode.ExtensionContext) => {
 			const path = res.fsPath || res.filePath;
 			const { localREPOPath, localTEMPLATEPath } = getTemplatePath(context);
 
-			console.log(11, "path", path, localREPOPath);
 			// 更新本地模板库代码逻辑：如果有目录就异步更新，否则就同步更新。毕竟不能对着空路径复制代码额
 			if (fs.existsSync(localREPOPath)) {
 				setTimeout(() => {

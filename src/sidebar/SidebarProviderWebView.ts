@@ -56,15 +56,16 @@ export class SidebarProviderWebview implements vscode.WebviewViewProvider {
 		const nonce = getNonce();
 
 		const { localTEMPLATEPath } = getTemplatePath(this.content);
-		const list = getTemplateList(localTEMPLATEPath);
-		const templateItems = list.map((item: any) => {
-			return `<div class="mb-2">${item.fileName}</div>
+		const list = getTemplateList(localTEMPLATEPath || "") || [];
+		const templateItems =
+			list.map((item: any) => {
+				return `<div class="mb-2">${item.fileName}</div>
 			<div class="mb-1">${item.readmeName}</div>
 			<div class="mb-1">${item.readmeDetail}</div>
 			<div class="mb-4"><a href=${item.demoUrl}>${
-				item.demoUrl ? "Demo" : ""
-			} </a></div>`;
-		});
+					item.demoUrl ? "Demo" : ""
+				} </a></div>`;
+			}) || [];
 		return `<!DOCTYPE html>
 	      <html lang="en">
 	      <head>

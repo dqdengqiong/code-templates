@@ -73,13 +73,14 @@ class GitManager {
 
 	/**
 	 * 执行git clone操作，兼容如果没有权限则重新输入账号密码
-	 * @param options.path 本地要存放该仓库的绝对路径 E:\ProjectGit\code-maker\tpl
+	 * @param options.path 本地要存放该仓库的绝对路径 E:\ProjectGit\code-templates\tpl
 	 * @param options.url 远程仓库的url https://gitee.com/gengjian1203/code-template.git
 	 */
 	async clone(
 		options: IGitManagerCloneOptionsType
 	): Promise<IGitManagerCloneResultType> {
 		const { path, url } = options;
+
 		return new Promise(async (resolve, reject) => {
 			try {
 				const cmdGitClone = `git clone ${url}`;
