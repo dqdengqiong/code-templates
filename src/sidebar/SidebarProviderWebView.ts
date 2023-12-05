@@ -28,7 +28,7 @@ export class SidebarProviderWebview implements vscode.WebviewViewProvider {
 			localResourceRoots: [this.content.extensionUri],
 		};
 
-		const html = getWebViewContent(this.content, this.pathHtml);
+		// /const html = getWebViewContent(this.content, this.pathHtml);
 
 		//webviewView.webview.html = html;
 
@@ -59,7 +59,7 @@ export class SidebarProviderWebview implements vscode.WebviewViewProvider {
 		const list = getTemplateList(localTEMPLATEPath) || [];
 		const templateItems =
 			list.map((item: any) => {
-				return `<div class="mb-2">${item.fileName}</div>
+				return `<div class="mb-2 title"><b>${item.fileName}</b></div>
 			<div class="mb-1">${item.readmeName}</div>
 			<div class="mb-1">${item.readmeDetail}</div>
 			<div class="mb-4"><a href=${item.demoUrl}>${

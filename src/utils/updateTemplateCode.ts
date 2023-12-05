@@ -33,15 +33,15 @@ const updateTemplateCode = async (context: vscode.ExtensionContext) => {
 		);
 	}
 
-	// 判断是否存在模板，如果存在就pull，如果不存在就cloneå
+	// 判断是否存在模板，如果存在就pull，如果不存在就clone
 	if (fs.existsSync(localREPOPath)) {
 		const optionsGitPull = {
-			path: localTPLPath,
+			path: localREPOPath,
 		};
 		const resGitPull = await GitManager.pull(optionsGitPull);
 		const { res, msg } = resGitPull;
 		if (res) {
-			vscode.window.showInformationMessage(`模板仓库克隆成功`);
+			vscode.window.showInformationMessage(`模板仓库更新成功`);
 		} else {
 			vscode.window.showErrorMessage(msg);
 		}

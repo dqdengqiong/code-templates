@@ -2,6 +2,12 @@
 	"name": "code-templates",
 	"displayName": "Code Templates",
 	"description": "快速生成模板代码的 VSCode 插件",
+	"keywords": [
+		"code",
+		"templates",
+		"模版",
+		"plugin"
+	],
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.84.0"

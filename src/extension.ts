@@ -35,15 +35,15 @@ export function activate(context: vscode.ExtensionContext) {
 	console.log(
 		'Congratulations, your extension "code-templates" is now active!'
 	);
-	updateTemplateCode(context);
-
-	// 初始化侧边栏
-	initSidebar(context);
 
 	// 注册命令
 	for (let key in commands) {
 		context.subscriptions.push(commands[key](context));
 	}
+
+	updateTemplateCode(context);
+	// 初始化侧边栏
+	initSidebar(context);
 }
 
 // This method is called when your extension is deactivated
