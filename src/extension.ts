@@ -13,15 +13,34 @@ import updateTemplateCode from "./utils/updateTemplateCode";
 // 初始化侧边栏
 const initSidebar = async (context: vscode.ExtensionContext) => {
 	const pathHtmlNpmManager = "./src/webview/template-list/index.html";
-	const sidebarWebViewNpmManager = new sidebar.SidebarProviderWebview(
-		context,
-		pathHtmlNpmManager
+	const sidebarWebViewCommonCompnents =
+		new sidebar.SidebarCommonCompnentsWebView(context, pathHtmlNpmManager);
+
+	const sidebarWebViewPageTemplates = new sidebar.SidebarPageTemplatesWebView(
+		context
+	);
+
+	const sidebarWebViewCommonUtils = new sidebar.SidebarCommonUtilsWebView(
+		context
 	);
 
 	context.subscriptions.push(
 		vscode.window.registerWebviewViewProvider(
-			"common-func-list",
-			sidebarWebViewNpmManager
+			"page-templates",
+			sidebarWebViewPageTemplates
+		)
+	);
+
+	context.subscriptions.push(
+		vscode.window.registerWebviewViewProvider(
+			"common-components",
+			sidebarWebViewCommonCompnents
+		)
+	);
+	context.subscriptions.push(
+		vscode.window.registerWebviewViewProvider(
+			"common-utils",
+			sidebarWebViewCommonUtils
 		)
 	);
 
@@ -35,13 +54,13 @@ export function activate(context: vscode.ExtensionContext) {
 	console.log(
 		'Congratulations, your extension "code-templates" is now active!'
 	);
-
 	// 注册命令
 	for (let key in commands) {
 		context.subscriptions.push(commands[key](context));
 	}
 
 	updateTemplateCode(context);
+
 	// 初始化侧边栏
 	initSidebar(context);
 }

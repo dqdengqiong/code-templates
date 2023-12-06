@@ -11,7 +11,9 @@ import {
 	getWebViewContent,
 } from "../utils";
 
-export class SidebarProviderWebview implements vscode.WebviewViewProvider {
+export class SidebarCommonCompnentsWebView
+	implements vscode.WebviewViewProvider
+{
 	_view?: vscode.WebviewView;
 	_doc?: vscode.TextDocument;
 	constructor(
@@ -55,8 +57,8 @@ export class SidebarProviderWebview implements vscode.WebviewViewProvider {
 		// Use a nonce to 只允许特定脚本运行.
 		const nonce = getNonce();
 
-		const { localTEMPLATEPath } = getTemplatePath(this.content);
-		const list = getTemplateList(localTEMPLATEPath) || [];
+		const { localComponentsPath } = getTemplatePath(this.content);
+		const list = getTemplateList(localComponentsPath) || [];
 		const templateItems =
 			list.map((item: any) => {
 				return `<div class="mb-2 title"><b>${item.fileName}</b></div>

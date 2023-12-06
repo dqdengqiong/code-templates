@@ -27,8 +27,16 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "code-templates.base.CloneTemplate",
-				"title": "🎉 拉取模板代码"
+				"command": "code-templates.base.ClonePageTemplate",
+				"title": "🎉 拉取页面模板代码"
+			},
+			{
+				"command": "code-templates.base.CloneCommonComponent",
+				"title": "🎉 拉取公共组件代码"
+			},
+			{
+				"command": "code-templates.base.CloneCommonUtils",
+				"title": "🎉 拉取公共方法方法代码"
 			},
 			{
 				"command": "code-templates.base.OpenTemplate",
@@ -37,16 +45,20 @@
 					"light": "./images/icon.svg",
 					"dark": "./images/icon.svg"
 				}
-			},
-			{
-				"command": "code-templates.helloWorld",
-				"title": "Hello World"
 			}
 		],
 		"menus": {
 			"explorer/context": [
 				{
-					"command": "code-templates.base.CloneTemplate",
+					"command": "code-templates.base.ClonePageTemplate",
+					"group": "navigation@1"
+				},
+				{
+					"command": "code-templates.base.CloneCommonComponent",
+					"group": "navigation@1"
+				},
+				{
+					"command": "code-templates.base.CloneCommonUtils",
 					"group": "navigation@1"
 				}
 			],
@@ -73,20 +85,20 @@
 			"code-templates-sidebar1": [
 				{
 					"type": "webview",
-					"id": "page-templates-list",
+					"id": "page-templates",
 					"name": "样板页面",
 					"icon": "./images/icon.svg",
 					"contextualTitle": "样板页面"
 				},
 				{
 					"type": "webview",
-					"id": "common-component-list",
+					"id": "common-components",
 					"name": "公共组件",
 					"contextualTitle": "公共组件"
 				},
 				{
 					"type": "webview",
-					"id": "common-func-list",
+					"id": "common-utils",
 					"name": "公共方法",
 					"contextualTitle": "公共方法"
 				}
@@ -100,14 +112,26 @@
 					"code-templates.config.gitTemplateUrl": {
 						"order": 1,
 						"type": "string",
-						"default": "https://gitee.com/gengjian1203/code-template.git",
+						"default": "https://git.nevint.com/workbench/web_laboratory.git",
 						"markdownDescription": "模板代码仓库url"
 					},
-					"code-templates.config.gitTemplatePath": {
+					"code-templates.config.gitPageTemplatePath": {
 						"order": 2,
 						"type": "string",
-						"default": "templates",
-						"markdownDescription": "模板代码仓库模板路径"
+						"default": "src/pages",
+						"markdownDescription": "模板代码仓库页面模板路径"
+					},
+					"code-templates.config.gitComponentsPath": {
+						"order": 2,
+						"type": "string",
+						"default": "src/components",
+						"markdownDescription": "模板代码仓库组件路径"
+					},
+					"code-templates.config.gitUtilsPath": {
+						"order": 2,
+						"type": "string",
+						"default": "src/utils",
+						"markdownDescription": "模板代码仓库utils路径"
 					},
 					"code-templates.config.localTemplatePath": {
 						"order": 3,

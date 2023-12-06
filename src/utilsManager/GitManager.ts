@@ -145,6 +145,7 @@ class GitManager {
 		options: IGitManagerPullOptionsType
 	): Promise<IGitManagerPullResultType> {
 		const { path } = options;
+		vscode.window.showInformationMessage(path);
 		return new Promise(async (resolve, reject) => {
 			try {
 				const cmdGitPull = `git pull `;

@@ -17,7 +17,6 @@ const updateTemplateCode = async (context: vscode.ExtensionContext) => {
 	const {
 		extensionPath,
 		gitTemplateUrl,
-		gitTemplatePath,
 		repoName,
 		tplName,
 		localTPLPath,
@@ -38,6 +37,7 @@ const updateTemplateCode = async (context: vscode.ExtensionContext) => {
 		const optionsGitPull = {
 			path: localREPOPath,
 		};
+
 		const resGitPull = await GitManager.pull(optionsGitPull);
 		const { res, msg } = resGitPull;
 		if (res) {
