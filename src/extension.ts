@@ -20,7 +20,7 @@ const initSidebar = async (context: vscode.ExtensionContext) => {
 
 	context.subscriptions.push(
 		vscode.window.registerWebviewViewProvider(
-			"code-templates-list",
+			"common-func-list",
 			sidebarWebViewNpmManager
 		)
 	);

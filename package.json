@@ -63,20 +63,32 @@
 		"viewsContainers": {
 			"activitybar": [
 				{
-					"id": "code-templates-sidebar2",
+					"id": "code-templates-sidebar1",
 					"title": "Code Templates",
 					"icon": "./images/icon.svg"
 				}
 			]
 		},
 		"views": {
-			"code-templates-sidebar2": [
+			"code-templates-sidebar1": [
 				{
 					"type": "webview",
-					"id": "code-templates-list",
-					"name": "模版目录",
+					"id": "page-templates-list",
+					"name": "样板页面",
 					"icon": "./images/icon.svg",
-					"contextualTitle": "模版目录"
+					"contextualTitle": "样板页面"
+				},
+				{
+					"type": "webview",
+					"id": "common-component-list",
+					"name": "公共组件",
+					"contextualTitle": "公共组件"
+				},
+				{
+					"type": "webview",
+					"id": "common-func-list",
+					"name": "公共方法",
+					"contextualTitle": "公共方法"
 				}
 			]
 		},
