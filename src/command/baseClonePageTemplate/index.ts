@@ -70,7 +70,6 @@ export default (context: vscode.ExtensionContext) => {
 										const regReplace = new RegExp(fileName, "g");
 										if (configInfo.dependences?.length) {
 											configInfo.dependences.forEach((item: string) => {
-												vscode.window.showInformationMessage(`${item}11`);
 												const dependenceAbsolutePath = path.resolve(
 													localPageTemplatesPath,
 													item
@@ -97,7 +96,7 @@ export default (context: vscode.ExtensionContext) => {
 											path: pathFirstFile,
 										});
 
-										vscode.window.showInformationMessage("拉取模板代码成功2");
+										vscode.window.showInformationMessage("拉取模板代码成功");
 									}
 								});
 							}
