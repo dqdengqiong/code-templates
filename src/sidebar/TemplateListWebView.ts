@@ -57,8 +57,8 @@ export class SidebarTemplateListWebView implements vscode.WebviewViewProvider {
 				return `<div class="mb-2 title"><b>${item.fileName}</b></div>
 			<div class="mb-1">${item.readmeName}</div>
 			<div class="mb-1">${item.readmeDetail}</div>
-			<div class="mb-4"><a href=${item.demoUrl}>${
-					item.demoUrl ? "Demo" : ""
+			<div class="mb-4"><a href=${item.configInfo?.demoUrl}>${
+					item.configInfo.demoUrl ? "Demo" : ""
 				} </a></div>`;
 			}) || [];
 		return `<!DOCTYPE html>

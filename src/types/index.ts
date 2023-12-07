@@ -9,7 +9,7 @@ export interface ITemplateDependenceConfig {
 export interface ITemplateConfgInfo {
 	name?: string;
 	demoUrl?: string;
-	dependences?: ITemplateDependenceConfig;
+	dependences?: string[];
 	user?: string;
 	description?: string;
 }

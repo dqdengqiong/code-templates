@@ -23,7 +23,10 @@ const getTemplateList = (pathTemplate: string): ITemplateInfo[] => {
 			const configPath = `${filePath}/config.json`;
 			let readmeName = "";
 			let readmeDetail = "";
-			let configInfo = {} as ITemplateConfgInfo;
+			let configInfo = {
+				dependences: ["../components/PageConfig"],
+				demoUrl: "https://www.baidu.com/",
+			} as ITemplateConfgInfo;
 			if (fs.existsSync(readmePath)) {
 				const data = fs.readFileSync(readmePath, "utf-8");
 				const arrDataList = (readmeName = data.split("\n"))
@@ -39,7 +42,7 @@ const getTemplateList = (pathTemplate: string): ITemplateInfo[] => {
 
 			if (fs.existsSync(configPath)) {
 				const data = fs.readFileSync(configPath, "utf-8");
-				configInfo = JSON.parse(data) || {};
+				configInfo = JSON.parse(data);
 			}
 
 			result.push({

@@ -13,6 +13,7 @@ import {
 	renameFiles,
 	updateTemplateCode,
 } from "../../utils";
+import * as path from "path";
 
 const fs = require("fs");
 
@@ -24,7 +25,7 @@ export default (context: vscode.ExtensionContext) => {
 		"code-templates.base.ClonePageTemplate",
 		async (res) => {
 			// console.log("CloneTemplate", res);
-			const path = res.fsPath || res.filePath;
+			const fsPath = res.fsPath || res.filePath;
 			const { localREPOPath, localPageTemplatesPath } =
 				getTemplatePath(context);
 
@@ -57,15 +58,27 @@ export default (context: vscode.ExtensionContext) => {
 						.then((valueQuickPick: any) => {
 							// 只有选中合法才执行后续逻辑
 							if (valueQuickPick) {
-								const { fileName, filePath } = valueQuickPick || {};
+								const { fileName, filePath, configInfo } = valueQuickPick || {};
 								const optionsInput = {
 									placeHolder: "请输入生成的目录名称: ",
 								};
+
 								vscode.window.showInputBox(optionsInput).then((valueInput) => {
 									// 只有输入合法才执行后续逻辑
 									if (valueInput) {
-										const descPath = `${path}/${valueInput}`;
+										const descPath = `${fsPath}/${valueInput}`;
 										const regReplace = new RegExp(fileName, "g");
+										if (configInfo.dependences?.length) {
+											configInfo.dependences.forEach((item: string) => {
+												vscode.window.showInformationMessage(`${item}11`);
+												const dependenceAbsolutePath = path.resolve(
+													localPageTemplatesPath,
+													item
+												);
+												const targetAbsolutePath = path.resolve(fsPath, item);
+												copyFiles(dependenceAbsolutePath, targetAbsolutePath);
+											});
+										}
 										// 将模板代码拷贝到对应路径上，同时对其做处理：将模板名称的字符串都替换成输入的目录名称字符串
 										copyFiles(
 											filePath,
@@ -74,6 +87,7 @@ export default (context: vscode.ExtensionContext) => {
 												return sourceFile.replace(regReplace, valueInput);
 											}
 										);
+
 										// 遍历一遍新生成的代码文件名，将模板文件名改为输入的文件名
 										renameFiles(descPath, regReplace, valueInput);
 										// 找到想要打开的文件绝对路由
@@ -83,7 +97,7 @@ export default (context: vscode.ExtensionContext) => {
 											path: pathFirstFile,
 										});
 
-										vscode.window.showInformationMessage("拉取模板代码成功");
+										vscode.window.showInformationMessage("拉取模板代码成功2");
 									}
 								});
 							}
