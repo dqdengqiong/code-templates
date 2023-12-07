@@ -28,7 +28,7 @@ const getTemplatePath = (context: vscode.ExtensionContext) => {
 	const localTPLPath = `${context.extensionPath}/${tplName}`;
 	const localREPOPath = `${context.extensionPath}/${tplName}/${repoName}`;
 	const localUtilsPath = `${context.extensionPath}/${tplName}/${repoName}/${gitUtilsPath}`;
-	const localPageTemplatePath = `${context.extensionPath}/${tplName}/${repoName}/${pageTemplatePathName}`;
+	const localPageTemplatesPath = `${context.extensionPath}/${tplName}/${repoName}/${pageTemplatePathName}`;
 	const localComponentsPath = `${context.extensionPath}/${tplName}/${repoName}/${gitComponentsPath}`;
 
 	return {
@@ -40,7 +40,7 @@ const getTemplatePath = (context: vscode.ExtensionContext) => {
 		localTPLPath, // 将代码仓库克隆到本地插件所在位置的 用来存放下载文件的 绝对路径
 		localREPOPath, // 将代码仓库克隆到本地插件所在位置的 用来存放下载文件的 模板仓库的 绝对路径
 		localUtilsPath, // 将代码仓库克隆到本地插件所在位置的 用来存放下载文件的 模板仓库的 Utils位置的 绝对路径
-		localPageTemplatePath, // 将代码仓库克隆到本地插件所在位置的 用来存放下载文件的 模板仓库的 页面模板代码位置的 绝对路径
+		localPageTemplatesPath, // 将代码仓库克隆到本地插件所在位置的 用来存放下载文件的 模板仓库的 页面模板代码位置的 绝对路径
 		localComponentsPath, // 将代码仓库克隆到本地插件所在位置的 用来存放下载文件的 模板仓库的 组件代码位置的 绝对路径
 	};
 };

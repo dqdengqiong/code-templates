@@ -9,38 +9,47 @@ import * as vscode from "vscode";
 import sidebar from "./sidebar";
 import commands from "./command";
 import updateTemplateCode from "./utils/updateTemplateCode";
+import getTemplatePath from "./utils/getTemplatePath";
 
 // 初始化侧边栏
 const initSidebar = async (context: vscode.ExtensionContext) => {
 	const pathHtmlNpmManager = "./src/webview/template-list/index.html";
-	const sidebarWebViewCommonCompnents =
-		new sidebar.SidebarCommonCompnentsWebView(context, pathHtmlNpmManager);
+	const { localPageTemplatesPath, localComponentsPath, localUtilsPath } =
+		getTemplatePath(context);
 
-	const sidebarWebViewPageTemplates = new sidebar.SidebarPageTemplatesWebView(
-		context
+	const sidebarWebViewPage = new sidebar.SidebarTemplateListWebView(
+		context,
+		localPageTemplatesPath,
+		pathHtmlNpmManager
 	);
-
-	const sidebarWebViewCommonUtils = new sidebar.SidebarCommonUtilsWebView(
-		context
+	const sidebarWebViewComponent = new sidebar.SidebarTemplateListWebView(
+		context,
+		localComponentsPath,
+		pathHtmlNpmManager
+	);
+	const sidebarWebViewUtil = new sidebar.SidebarTemplateListWebView(
+		context,
+		localUtilsPath,
+		pathHtmlNpmManager
 	);
 
 	context.subscriptions.push(
 		vscode.window.registerWebviewViewProvider(
 			"page-templates",
-			sidebarWebViewPageTemplates
+			sidebarWebViewPage
 		)
 	);
 
 	context.subscriptions.push(
 		vscode.window.registerWebviewViewProvider(
 			"common-components",
-			sidebarWebViewCommonCompnents
+			sidebarWebViewComponent
 		)
 	);
 	context.subscriptions.push(
 		vscode.window.registerWebviewViewProvider(
 			"common-utils",
-			sidebarWebViewCommonUtils
+			sidebarWebViewUtil
 		)
 	);
 

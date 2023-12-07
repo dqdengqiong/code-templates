@@ -4,20 +4,14 @@
  * @Description:
  */
 import * as vscode from "vscode";
-import {
-	getNonce,
-	getTemplateList,
-	getTemplatePath,
-	getWebViewContent,
-} from "../utils";
+import { getNonce, getTemplateList } from "../utils";
 
-export class SidebarCommonCompnentsWebView
-	implements vscode.WebviewViewProvider
-{
+export class SidebarTemplateListWebView implements vscode.WebviewViewProvider {
 	_view?: vscode.WebviewView;
 	_doc?: vscode.TextDocument;
 	constructor(
 		private readonly content: vscode.ExtensionContext,
+		private readonly templatePath: string, // webview 的 html 文件路径
 		private readonly pathHtml: string
 	) {}
 
@@ -57,8 +51,7 @@ export class SidebarCommonCompnentsWebView
 		// Use a nonce to 只允许特定脚本运行.
 		const nonce = getNonce();
 
-		const { localComponentsPath } = getTemplatePath(this.content);
-		const list = getTemplateList(localComponentsPath) || [];
+		const list = getTemplateList(this.templatePath) || [];
 		const templateItems =
 			list.map((item: any) => {
 				return `<div class="mb-2 title"><b>${item.fileName}</b></div>

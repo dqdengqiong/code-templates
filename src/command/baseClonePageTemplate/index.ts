@@ -25,7 +25,8 @@ export default (context: vscode.ExtensionContext) => {
 		async (res) => {
 			// console.log("CloneTemplate", res);
 			const path = res.fsPath || res.filePath;
-			const { localREPOPath, localPageTemplatePath } = getTemplatePath(context);
+			const { localREPOPath, localPageTemplatesPath } =
+				getTemplatePath(context);
 
 			// 更新本地模板库代码逻辑：如果有目录就异步更新，否则就同步更新。毕竟不能对着空路径复制代码额
 			if (fs.existsSync(localREPOPath)) {
@@ -37,8 +38,8 @@ export default (context: vscode.ExtensionContext) => {
 			}
 
 			if (fs.existsSync(localREPOPath)) {
-				if (fs.existsSync(localPageTemplatePath)) {
-					const list = getTemplateList(localPageTemplatePath);
+				if (fs.existsSync(localPageTemplatesPath)) {
+					const list = getTemplateList(localPageTemplatesPath);
 					const itemsQuickPick = list.map((item: any) => {
 						return {
 							...item,

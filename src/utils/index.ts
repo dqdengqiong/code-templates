@@ -1,3 +1,8 @@
+/*
+ * @Author: miya.deng
+ * @Date: 2023-12-03 17:20:06
+ * @Description:
+ */
 import copyFiles from "./copyFiles";
 import createDirectory from "./createDirectory";
 import formatPath from "./formatPath";
@@ -14,18 +19,18 @@ import renameFiles from "./renameFiles";
 import updateTemplateCode from "./updateTemplateCode";
 
 export {
-  copyFiles,
-  createDirectory,
-  formatPath,
-  getBuiltInGitApi,
-  getFirstFilePath,
-  getNonce,
-  getProjectRootPath,
-  getTemplateList,
-  getTemplatePath,
-  getWebViewContent,
-  openFile,
-  removeDirectory,
-  renameFiles,
-  updateTemplateCode,
+	copyFiles,
+	createDirectory,
+	formatPath,
+	getBuiltInGitApi,
+	getFirstFilePath,
+	getNonce,
+	getProjectRootPath,
+	getTemplateList,
+	getTemplatePath,
+	getWebViewContent,
+	openFile,
+	removeDirectory,
+	renameFiles,
+	updateTemplateCode,
 };
