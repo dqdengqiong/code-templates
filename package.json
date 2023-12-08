@@ -28,11 +28,11 @@
 		"commands": [
 			{
 				"command": "code-templates.base.CloneCommonUtils",
-				"title": "🎉 拉取公共 Utils"
+				"title": "🎉 拉取 Utils"
 			},
 			{
 				"command": "code-templates.base.CloneCommonComponent",
-				"title": "🎉 拉取公共组件代码"
+				"title": "🎉 拉取组件代码"
 			},
 			{
 				"command": "code-templates.base.ClonePageTemplate",
@@ -93,8 +93,8 @@
 				{
 					"type": "webview",
 					"id": "common-components",
-					"name": "公共组件",
-					"contextualTitle": "公共组件"
+					"name": "模版组件",
+					"contextualTitle": "模版组件"
 				},
 				{
 					"type": "webview",

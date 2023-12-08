@@ -26,6 +26,7 @@ const getTemplateList = (pathTemplate: string): ITemplateInfo[] => {
 			let configInfo = {
 				dependences: ["../components/PageConfig"],
 				demoUrl: "https://www.baidu.com/",
+				description: "这是一些神神叨叨的描述",
 			} as ITemplateConfgInfo;
 			if (fs.existsSync(readmePath)) {
 				const data = fs.readFileSync(readmePath, "utf-8");
