@@ -14,44 +14,69 @@ import getTemplatePath from "./utils/getTemplatePath";
 // 初始化侧边栏
 const initSidebar = async (context: vscode.ExtensionContext) => {
 	const pathHtmlNpmManager = "./src/webview/template-list/index.html";
-	const { localPageTemplatesPath, localComponentsPath, localUtilsPath } =
-		getTemplatePath(context);
+	const {
+		localTemplate1Path,
+		localTemplate2Path,
+		localTemplate3Path,
+		localTemplate4Path,
+	} = getTemplatePath(context);
 
-	const sidebarWebViewPage = new sidebar.SidebarTemplateListWebView(
-		context,
-		localPageTemplatesPath,
-		pathHtmlNpmManager
-	);
-	const sidebarWebViewComponent = new sidebar.SidebarTemplateListWebView(
-		context,
-		localComponentsPath,
-		pathHtmlNpmManager
-	);
-	const sidebarWebViewUtil = new sidebar.SidebarTemplateListWebView(
-		context,
-		localUtilsPath,
-		pathHtmlNpmManager
-	);
+	if (localTemplate1Path) {
+		const sidebarWebViewPage = new sidebar.SidebarTemplateListWebView(
+			context,
+			localTemplate1Path,
+			pathHtmlNpmManager
+		);
 
-	context.subscriptions.push(
-		vscode.window.registerWebviewViewProvider(
-			"page-templates",
-			sidebarWebViewPage
-		)
-	);
+		context.subscriptions.push(
+			vscode.window.registerWebviewViewProvider(
+				"page-templates",
+				sidebarWebViewPage
+			)
+		);
+	}
 
-	context.subscriptions.push(
-		vscode.window.registerWebviewViewProvider(
-			"common-components",
-			sidebarWebViewComponent
-		)
-	);
-	context.subscriptions.push(
-		vscode.window.registerWebviewViewProvider(
-			"common-utils",
-			sidebarWebViewUtil
-		)
-	);
+	if (localTemplate2Path) {
+		const sidebarWebViewComponent = new sidebar.SidebarTemplateListWebView(
+			context,
+			localTemplate2Path,
+			pathHtmlNpmManager
+		);
+		context.subscriptions.push(
+			vscode.window.registerWebviewViewProvider(
+				"common-components",
+				sidebarWebViewComponent
+			)
+		);
+	}
+
+	if (localTemplate3Path) {
+		const sidebarWebViewUtil = new sidebar.SidebarTemplateListWebView(
+			context,
+			localTemplate3Path,
+			pathHtmlNpmManager
+		);
+		context.subscriptions.push(
+			vscode.window.registerWebviewViewProvider(
+				"common-utils",
+				sidebarWebViewUtil
+			)
+		);
+	}
+
+	// if (localTemplate4Path) {
+	// 	const sidebarWebViewUtil = new sidebar.SidebarTemplateListWebView(
+	// 		context,
+	// 		localTemplate4Path,
+	// 		pathHtmlNpmManager
+	// 	);
+	// 	context.subscriptions.push(
+	// 		vscode.window.registerWebviewViewProvider(
+	// 			"common-utils",
+	// 			sidebarWebViewUtil
+	// 		)
+	// 	);
+	// }
 
 	console.log("initSidebar done.");
 };
@@ -61,9 +86,11 @@ export function activate(context: vscode.ExtensionContext) {
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
 	console.log(
-		'Congratulations, your extension "code-templates" is now active!'
+		'Congratulations, your extension "code-templates" is now active2!'
 	);
+
 	// 注册命令
+
 	for (let key in commands) {
 		context.subscriptions.push(commands[key](context));
 	}

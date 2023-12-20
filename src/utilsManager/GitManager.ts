@@ -148,7 +148,7 @@ class GitManager {
 		vscode.window.showInformationMessage(path);
 		return new Promise(async (resolve, reject) => {
 			try {
-				const cmdGitPull = `git pull `;
+				const cmdGitPull = `git pull origin feat/preview-v2`;
 				const resGitPull = execSync(cmdGitPull, {
 					stdio: "pipe", //
 					encoding: "utf-8",

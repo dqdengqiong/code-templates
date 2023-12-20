@@ -4,6 +4,7 @@
  * @Description:
  */
 import * as vscode from "vscode";
+import { QuickPickItem } from "vscode";
 
 /**
  * 获取模板库相关路径
@@ -14,22 +15,68 @@ const getTemplatePath = (context: vscode.ExtensionContext) => {
 	const gitTemplateUrl = String(
 		vscodeConfig.get("code-templates.config.gitTemplateUrl")
 	);
-	const gitUtilsPath = vscodeConfig.get("code-templates.config.gitUtilsPath"); // Utils的相对路径
-	const pageTemplatePathName = vscodeConfig.get(
-		"code-templates.config.gitPageTemplatePath"
-	); // 页面模版的相对路径
-	const gitComponentsPath = vscodeConfig.get(
-		"code-templates.config.gitComponentsPath"
-	);
+
+	// 模版目录的相对路径及其描述
+	const template1GitRelativePath: string =
+		vscodeConfig.get("code-templates.config.template1GitRelativePath") || "";
+	const template2GitRelativePath: string =
+		vscodeConfig.get("code-templates.config.template2GitRelativePath") || "";
+	const template3GitRelativePath: string =
+		vscodeConfig.get("code-templates.config.template3GitRelativePath") || "";
+	const template4GitRelativePath: string =
+		vscodeConfig.get("code-templates.config.template4GitRelativePath") || "";
+	const template1Description: string =
+		vscodeConfig.get("code-templates.config.template1Description") || "";
+	const template2Description: string =
+		vscodeConfig.get("code-templates.config.template2Description") || "";
+	const template3Description: string =
+		vscodeConfig.get("code-templates.config.template3Description") || "";
+	const template4Description: string =
+		vscodeConfig.get("code-templates.config.template4Description") || "";
+
 	const tplName = vscodeConfig.get("code-templates.config.localTemplatePath");
 
 	const match = gitTemplateUrl.match(/\/([^\/]*)$/) || [];
 	const repoName = (match[1] || "").replace(/.git/g, ""); // 模板代码仓库名称 用于判断是否已经存在该仓库
 	const localTPLPath = `${context.extensionPath}/${tplName}`;
 	const localREPOPath = `${context.extensionPath}/${tplName}/${repoName}`;
-	const localUtilsPath = `${context.extensionPath}/${tplName}/${repoName}/${gitUtilsPath}`;
-	const localPageTemplatesPath = `${context.extensionPath}/${tplName}/${repoName}/${pageTemplatePathName}`;
-	const localComponentsPath = `${context.extensionPath}/${tplName}/${repoName}/${gitComponentsPath}`;
+
+	const localTemplate1Path: string = template2GitRelativePath
+		? `${context.extensionPath}/${tplName}/${repoName}/${template1GitRelativePath}`
+		: "";
+	const localTemplate2Path: string = template2GitRelativePath
+		? `${context.extensionPath}/${tplName}/${repoName}/${template2GitRelativePath}`
+		: "";
+	const localTemplate3Path: string = template3GitRelativePath
+		? `${context.extensionPath}/${tplName}/${repoName}/${template3GitRelativePath}`
+		: "";
+	const localTemplate4Path: string = template4GitRelativePath
+		? `${context.extensionPath}/${tplName}/${repoName}/${template4GitRelativePath}`
+		: "";
+
+	// 模版分类list
+	const templateCategorys = [
+		{
+			label: localTemplate1Path.match(/\/([^\/]*)$/)?.[1] || "",
+			description: template1Description,
+			path: localTemplate1Path,
+		},
+		{
+			label: localTemplate2Path.match(/\/([^\/]*)$/)?.[1] || "",
+			description: template2Description,
+			path: localTemplate2Path,
+		},
+		{
+			label: localTemplate3Path.match(/\/([^\/]*)$/)?.[1] || "",
+			description: template3Description,
+			path: localTemplate3Path,
+		},
+		{
+			label: localTemplate4Path.match(/\/([^\/]*)$/)?.[1] || "",
+			description: template4Description,
+			path: localTemplate4Path,
+		},
+	];
 
 	return {
 		extensionPath, // 本插件在本地的 绝对路径
@@ -39,9 +86,11 @@ const getTemplatePath = (context: vscode.ExtensionContext) => {
 		tplName, // 将代码仓库克隆到本地插件所在位置的 用来存放下载文件的 相对路径
 		localTPLPath, // 将代码仓库克隆到本地插件所在位置的 用来存放下载文件的 绝对路径
 		localREPOPath, // 将代码仓库克隆到本地插件所在位置的 用来存放下载文件的 模板仓库的 绝对路径
-		localUtilsPath, // 将代码仓库克隆到本地插件所在位置的 用来存放下载文件的 模板仓库的 Utils位置的 绝对路径
-		localPageTemplatesPath, // 将代码仓库克隆到本地插件所在位置的 用来存放下载文件的 模板仓库的 页面模板代码位置的 绝对路径
-		localComponentsPath, // 将代码仓库克隆到本地插件所在位置的 用来存放下载文件的 模板仓库的 组件代码位置的 绝对路径
+		localTemplate1Path, // 将代码仓库克隆到本地插件所在位置的 用来存放下载文件的 模板仓库的 模板代码1 位置的 绝对路径
+		localTemplate2Path, // 将代码仓库克隆到本地插件所在位置的 用来存放下载文件的 模板仓库的 模板代码2 位置的 绝对路径
+		localTemplate3Path, // 将代码仓库克隆到本地插件所在位置的 用来存放下载文件的 模板仓库的 模板代码3 位置的 绝对路径
+		localTemplate4Path, //将代码仓库克隆到本地插件所在位置的 用来存放下载文件的 模板仓库的 模板代码4 位置的 绝对路径
+		templateCategorys, // 模版分类list
 	};
 };
 

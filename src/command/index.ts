@@ -6,11 +6,13 @@
 import baseCloneCommonComponent from "./baseCloneCommonComponent";
 import baseOpenTemplate from "./baseOpenTemplate";
 import baseClonePageTemplate from "./baseClonePageTemplate";
+import baseCloneUtil from "./baseCloneUtil";
 
 const commands: any = {
 	baseCloneCommonComponent,
 	baseOpenTemplate,
 	baseClonePageTemplate,
+	baseCloneUtil,
 };
 
 export default commands;

@@ -27,16 +27,16 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "code-templates.base.CloneCommonUtils",
-				"title": "🎉 拉取 Utils"
+				"command": "code-templates.base.CloneCommonComponent",
+				"title": "🎉 拉取公共组件/Utils"
 			},
 			{
 				"command": "code-templates.base.CloneCommonComponent",
-				"title": "🎉 拉取组件代码"
+				"title": "🎉 拉取组件模版代码"
 			},
 			{
 				"command": "code-templates.base.ClonePageTemplate",
-				"title": "🎉 拉取页面模板代码"
+				"title": "🎉 拉取页面模版代码"
 			},
 			{
 				"command": "code-templates.base.OpenTemplate",
@@ -115,23 +115,53 @@
 						"default": "https://git.nevint.com/workbench/web_laboratory.git",
 						"markdownDescription": "模板代码仓库url"
 					},
-					"code-templates.config.gitPageTemplatePath": {
+					"code-templates.config.template1Description": {
 						"order": 2,
+						"type": "string",
+						"default": "页面模版",
+						"markdownDescription": "模板代码模目录1描述"
+					},
+					"code-templates.config.template1GitRelativePath": {
+						"order": 3,
 						"type": "string",
 						"default": "src/pages",
-						"markdownDescription": "模板代码仓库页面模板路径"
+						"markdownDescription": "模板代码模目录1相对路径"
 					},
-					"code-templates.config.gitComponentsPath": {
-						"order": 2,
+					"code-templates.config.template2Description": {
+						"order": 4,
+						"type": "string",
+						"default": "组件模版（业务组件）",
+						"markdownDescription": "模板代码模目录2描述"
+					},
+					"code-templates.config.template2GitRelativePath": {
+						"order": 3,
+						"type": "string",
+						"default": "src/modules",
+						"markdownDescription": "模板代码模目录2相对路径"
+					},
+					"code-templates.config.template3Description": {
+						"order": 4,
+						"type": "string",
+						"default": "公共组件",
+						"markdownDescription": "模板代码模目录3描述"
+					},
+					"code-templates.config.template3GitRelativePath": {
+						"order": 4,
 						"type": "string",
 						"default": "src/components",
-						"markdownDescription": "模板代码仓库组件路径"
+						"markdownDescription": "模板代码模目录3 相对路径"
 					},
-					"code-templates.config.gitUtilsPath": {
-						"order": 2,
+					"code-templates.config.template4Description": {
+						"order": 4,
+						"type": "string",
+						"default": "公共 Utils",
+						"markdownDescription": "模板代码模目录4描述"
+					},
+					"code-templates.config.template4GitRelativePath": {
+						"order": 5,
 						"type": "string",
 						"default": "src/utils",
-						"markdownDescription": "模板代码仓库utils路径"
+						"markdownDescription": "模板代码模目录4 相对路径"
 					},
 					"code-templates.config.localTemplatePath": {
 						"order": 3,
