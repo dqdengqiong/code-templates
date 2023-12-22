@@ -46,6 +46,9 @@ export class SidebarTemplateTreeListWebView
 		const styleMainUri = webview.asWebviewUri(
 			vscode.Uri.joinPath(this.content.extensionUri, "assets", "style.css")
 		);
+		const jsMainUri = webview.asWebviewUri(
+			vscode.Uri.joinPath(this.content.extensionUri, "assets", "action.js")
+		);
 
 		// Use a nonce to 只允许特定脚本运行.
 		const nonce = getNonce();
@@ -86,6 +89,7 @@ export class SidebarTemplateTreeListWebView
 								}; script-src 'nonce-${nonce}';">
 	      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		  <link href="${styleMainUri}" rel="stylesheet">
+		  <script src="${jsMainUri}"></script>
 	              <script nonce="${nonce}">
 	                const tsvscode = acquireVsCodeApi(); //内置函数，可以访问 VS Code API 对象
 	              </script>
