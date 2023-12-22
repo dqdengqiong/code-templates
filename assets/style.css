@@ -9,4 +9,14 @@
 }
 .title {
 	color: #ffefbf;
+	font-weight: bold;
+}
+
+.group-title {
+	color: #00b3be;
+	font-size: 16px;
+	font-weight: bold;
+}
+.sub-list {
+	padding-left: 14px;
 }

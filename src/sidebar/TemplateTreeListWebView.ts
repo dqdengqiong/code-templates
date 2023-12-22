@@ -60,7 +60,7 @@ export class SidebarTemplateTreeListWebView
 		const templateCategoryTreeList = treeList?.map((categoryItem) => {
 			const templateList =
 				categoryItem.fileList?.map((item: ITemplateInfo) => {
-					return `<div class="mb-2 title"><b>${item?.fileName}</b></div>
+					return `<div class="mb-2 title">${item?.fileName}</div>
 			<div class="mb-1">${item.configInfo?.name || ""}</div>
 			<div class="mb-1">${item.configInfo?.description || ""}</div>
 			<div class="mb-1">${item.readmeDetail || ""}</div>
@@ -70,9 +70,9 @@ export class SidebarTemplateTreeListWebView
 				}) || [];
 
 			return `<div>
-			<div class="mb-2 title"><b>${categoryItem?.label} (${
+			<div class="mb-2 group-title">${categoryItem?.label} (${
 				categoryItem?.description
-			})</b></div>
+			})</div>
 			<div class="sub-list">${templateList?.join("")}</div>
 			</div>`;
 		});
