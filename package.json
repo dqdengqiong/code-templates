@@ -27,7 +27,7 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "code-templates.base.CloneCommonComponent",
+				"command": "code-templates.base.CloneCommonUtils",
 				"title": "🎉 拉取公共组件/Utils"
 			},
 			{
@@ -89,18 +89,6 @@
 					"name": "样板页面",
 					"icon": "./images/icon.svg",
 					"contextualTitle": "样板页面"
-				},
-				{
-					"type": "webview",
-					"id": "common-components",
-					"name": "模版组件",
-					"contextualTitle": "模版组件"
-				},
-				{
-					"type": "webview",
-					"id": "common-utils",
-					"name": "公共 Utils",
-					"contextualTitle": "公共 Utils"
 				}
 			]
 		},

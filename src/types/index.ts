@@ -17,5 +17,14 @@ export interface ITemplateConfgInfo {
 export interface ITemplateInfo {
 	fileName?: string;
 	filePath?: string;
+	readmeName?: string;
+	readmeDetail?: string;
 	configInfo?: ITemplateConfgInfo;
+}
+
+export interface ITemplateCategoryInfo {
+	label: string;
+	description: string;
+	path: string;
+	fileList: ITemplateInfo[];
 }

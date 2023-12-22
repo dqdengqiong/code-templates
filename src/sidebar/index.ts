@@ -4,6 +4,8 @@
  * @Description:
  */
 import { SidebarTemplateListWebView } from "./TemplateListWebView";
+import { SidebarTemplateTreeListWebView } from "./TemplateTreeListWebView";
 export default {
 	SidebarTemplateListWebView,
+	SidebarTemplateTreeListWebView,
 };

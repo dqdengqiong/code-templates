@@ -21,48 +21,58 @@ const initSidebar = async (context: vscode.ExtensionContext) => {
 		localTemplate4Path,
 	} = getTemplatePath(context);
 
-	if (localTemplate1Path) {
-		const sidebarWebViewPage = new sidebar.SidebarTemplateListWebView(
-			context,
-			localTemplate1Path,
-			pathHtmlNpmManager
-		);
+	const sidebarWebViewPage = new sidebar.SidebarTemplateTreeListWebView(
+		context
+	);
+	context.subscriptions.push(
+		vscode.window.registerWebviewViewProvider(
+			"page-templates",
+			sidebarWebViewPage
+		)
+	);
 
-		context.subscriptions.push(
-			vscode.window.registerWebviewViewProvider(
-				"page-templates",
-				sidebarWebViewPage
-			)
-		);
-	}
+	// if (localTemplate1Path) {
+	// 	const sidebarWebViewPage = new sidebar.SidebarTemplateListWebView(
+	// 		context,
+	// 		localTemplate1Path,
+	// 		pathHtmlNpmManager
+	// 	);
 
-	if (localTemplate2Path) {
-		const sidebarWebViewComponent = new sidebar.SidebarTemplateListWebView(
-			context,
-			localTemplate2Path,
-			pathHtmlNpmManager
-		);
-		context.subscriptions.push(
-			vscode.window.registerWebviewViewProvider(
-				"common-components",
-				sidebarWebViewComponent
-			)
-		);
-	}
+	// 	context.subscriptions.push(
+	// 		vscode.window.registerWebviewViewProvider(
+	// 			"page-templates",
+	// 			sidebarWebViewPage
+	// 		)
+	// 	);
+	// }
 
-	if (localTemplate3Path) {
-		const sidebarWebViewUtil = new sidebar.SidebarTemplateListWebView(
-			context,
-			localTemplate3Path,
-			pathHtmlNpmManager
-		);
-		context.subscriptions.push(
-			vscode.window.registerWebviewViewProvider(
-				"common-utils",
-				sidebarWebViewUtil
-			)
-		);
-	}
+	// if (localTemplate2Path) {
+	// 	const sidebarWebViewComponent = new sidebar.SidebarTemplateListWebView(
+	// 		context,
+	// 		localTemplate2Path,
+	// 		pathHtmlNpmManager
+	// 	);
+	// 	context.subscriptions.push(
+	// 		vscode.window.registerWebviewViewProvider(
+	// 			"common-components",
+	// 			sidebarWebViewComponent
+	// 		)
+	// 	);
+	// }
+
+	// if (localTemplate3Path) {
+	// 	const sidebarWebViewUtil = new sidebar.SidebarTemplateListWebView(
+	// 		context,
+	// 		localTemplate3Path,
+	// 		pathHtmlNpmManager
+	// 	);
+	// 	context.subscriptions.push(
+	// 		vscode.window.registerWebviewViewProvider(
+	// 			"common-utils",
+	// 			sidebarWebViewUtil
+	// 		)
+	// 	);
+	// }
 
 	// if (localTemplate4Path) {
 	// 	const sidebarWebViewUtil = new sidebar.SidebarTemplateListWebView(
